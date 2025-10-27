@@ -1,0 +1,61 @@
+@page "/login"
+@using Rova.Shared.Models
+@inject NavigationManager Navigation
+@inject IAuthService AuthService
+
+<h3>Login</h3>
+
+<div class="login-container">
+    <h4>Welcome to Rova</h4>
+    <EditForm Model="@user" OnValidSubmit="@HandleLogin">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div>
+            <label for="username">Username:</label>
+            <InputText id="username" @bind-Value="@user.Username" />
+            <ValidationMessage For="@(() => user.Username)" />
+        </div>
+
+        <div>
+            <label for="password">Password:</label>
+            <InputText id="password" type="password" @bind-Value="@user.Password" />
+            <ValidationMessage For="@(() => user.Password)" />
+        </div>
+
+        <div>
+            <label for="role">Role:</label>
+            <InputSelect id="role" @bind-Value="@user.Role">
+                <option value="">Select Role</option>
+                <option value="Merchant">Merchant</option>
+                <option value="Worker">Worker</option>
+            </InputSelect>
+            <ValidationMessage For="@(() => user.Role)" />
+        </div>
+
+        <button type="submit">Login</button>
+    </EditForm>
+
+    @if (loginError)
+    {
+        <p class="error-message">Invalid login attempt. Please try again.</p>
+    }
+</div>
+
+@code {
+    private UserDto user = new UserDto();
+    private bool loginError = false;
+
+    private async Task HandleLogin()
+    {
+        var result = await AuthService.LoginAsync(user);
+        if (result)
+        {
+            Navigation.NavigateTo("/");
+        }
+        else
+        {
+            loginError = true;
+        }
+    }
+}

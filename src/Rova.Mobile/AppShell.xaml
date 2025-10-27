@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+       x:Class="Rova.Mobile.AppShell"
+       Shell.BackgroundColor="{DynamicResource BackgroundColor}"
+       Shell.ForegroundColor="{DynamicResource TextColor}">
+
+    <ShellItem>
+        <ShellContent ContentTemplate="{DataTemplate local:HomePage}" />
+    </ShellItem>
+
+    <ShellItem Title="Services">
+        <ShellContent ContentTemplate="{DataTemplate local:ServicesPage}" />
+    </ShellItem>
+
+    <ShellItem Title="Booking">
+        <ShellContent ContentTemplate="{DataTemplate local:BookingPage}" />
+    </ShellItem>
+
+    <ShellItem Title="Login">
+        <ShellContent ContentTemplate="{DataTemplate local:LoginPage}" />
+    </ShellItem>
+
+    <ShellItem Title="Merchant Dashboard">
+        <ShellContent ContentTemplate="{DataTemplate local:MerchantDashboardPage}" />
+    </ShellItem>
+
+    <ShellItem Title="Attendance">
+        <ShellContent ContentTemplate="{DataTemplate local:AttendancePage}" />
+    </ShellItem>
+
+    <ShellItem Title="Inventory">
+        <ShellContent ContentTemplate="{DataTemplate local:InventoryPage}" />
+    </ShellItem>
+
+    <ShellItem Title="Debts">
+        <ShellContent ContentTemplate="{DataTemplate local:DebtsPage}" />
+    </ShellItem>
+
+    <ShellItem Title="Customers">
+        <ShellContent ContentTemplate="{DataTemplate local:CustomersPage}" />
+    </ShellItem>
+
+    <ShellItem Title="Dashboard">
+        <ShellContent ContentTemplate="{DataTemplate local:DashboardPage}" />
+    </ShellItem>
+
+</Shell>

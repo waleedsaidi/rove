@@ -1,0 +1,13 @@
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Application.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <OnPlatform x:TypeArguments="ResourceDictionary">
+          <On Platform="Android, iOS" Value="Resources/Styles/LightTheme.xaml" />
+          <On Platform="Windows" Value="Resources/Styles/DarkTheme.xaml" />
+        </OnPlatform>
+        <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </Application.Resources>
+</Application>

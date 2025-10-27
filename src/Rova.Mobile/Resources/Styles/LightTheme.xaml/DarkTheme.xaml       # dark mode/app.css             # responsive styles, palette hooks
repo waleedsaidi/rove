@@ -1,0 +1,31 @@
+<attachment id="file:DarkTheme.xaml">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Color x:Key="PrimaryColor">#FF0000</Color> <!-- Red -->
+    <Color x:Key="SecondaryColor">#000000</Color> <!-- Black -->
+    <Color x:Key="BackgroundColor">#121212</Color> <!-- Dark Background -->
+    <Color x:Key="TextColor">#FFFFFF</Color> <!-- White Text -->
+    <Color x:Key="AccentColor">#FF0000</Color> <!-- Red Accent -->
+
+    <Style TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+    </Style>
+
+    <Style TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />
+        <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+    </Style>
+
+    <Style TargetType="Entry">
+        <Setter Property="BackgroundColor" Value="{StaticResource SecondaryColor}" />
+        <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+    </Style>
+
+    <Style TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
+        <Setter Property="BorderColor" Value="{StaticResource AccentColor}" />
+    </Style>
+
+</ResourceDictionary>
+</attachment>

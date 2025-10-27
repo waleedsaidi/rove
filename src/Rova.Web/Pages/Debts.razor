@@ -1,0 +1,48 @@
+@page "/debts"
+
+@using Rova.Shared.Models
+@inject HttpClient Http
+
+<h3>Customer Debts</h3>
+
+@if (debts == null)
+{
+    <p><em>Loading...</em></p>
+}
+else if (debts.Count == 0)
+{
+    <p>No debts found.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Customer Name</th>
+                <th>Debt Amount</th>
+                <th>Due Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var debt in debts)
+            {
+                <tr>
+                    <td>@debt.CustomerName</td>
+                    <td>@debt.Amount.ToString("C")</td>
+                    <td>@debt.DueDate.ToShortDateString()</td>
+                    <td>@debt.Status</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<DebtRecord> debts;
+
+    protected override async Task OnInitializedAsync()
+    {
+        debts = await Http.GetFromJsonAsync<List<DebtRecord>>("api/debts");
+    }
+}

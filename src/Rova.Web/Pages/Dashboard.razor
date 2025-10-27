@@ -1,0 +1,80 @@
+@page "/dashboard"
+
+@using Rova.Shared.Models
+@inject NavigationManager Navigation
+
+<h3>Dashboard</h3>
+
+<div class="dashboard-container">
+    <div class="stats">
+        <h4>Statistics Overview</h4>
+        <div class="stat-item">
+            <span>Total Services</span>
+            <span>@totalServices</span>
+        </div>
+        <div class="stat-item">
+            <span>Total Customers</span>
+            <span>@totalCustomers</span>
+        </div>
+        <div class="stat-item">
+            <span>Total Revenue</span>
+            <span>@totalRevenue</span>
+        </div>
+    </div>
+
+    <div class="recent-activity">
+        <h4>Recent Activity</h4>
+        <ul>
+            @foreach (var activity in recentActivities)
+            {
+                <li>@activity</li>
+            }
+        </ul>
+    </div>
+</div>
+
+@code {
+    private int totalServices;
+    private int totalCustomers;
+    private decimal totalRevenue;
+    private List<string> recentActivities;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Fetch statistics and recent activities from the service
+        totalServices = await FetchTotalServices();
+        totalCustomers = await FetchTotalCustomers();
+        totalRevenue = await FetchTotalRevenue();
+        recentActivities = await FetchRecentActivities();
+    }
+
+    private Task<int> FetchTotalServices()
+    {
+        // Simulate fetching data
+        return Task.FromResult(100);
+    }
+
+    private Task<int> FetchTotalCustomers()
+    {
+        // Simulate fetching data
+        return Task.FromResult(50);
+    }
+
+    private Task<decimal> FetchTotalRevenue()
+    {
+        // Simulate fetching data
+        return Task.FromResult(15000.00m);
+    }
+
+    private Task<List<string>> FetchRecentActivities()
+    {
+        // Simulate fetching data
+        return Task.FromResult(new List<string>
+        {
+            "Service A completed",
+            "Service B scheduled",
+            "Customer C visited",
+            "Payment received from Customer D"
+        });
+    }
+}

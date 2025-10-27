@@ -1,0 +1,84 @@
+@page "/inventory"
+@using Rova.Shared.Models
+@inject InventoryService InventoryService
+
+<h3>Inventory Management</h3>
+
+<div class="inventory-container">
+    <input type="text" @bind="searchTerm" placeholder="Search for parts..." />
+    <button @onclick="SearchInventory">Search</button>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Part Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (inventoryItems != null && inventoryItems.Count > 0)
+            {
+                foreach (var item in inventoryItems)
+                {
+                    <tr>
+                        <td>@item.PartName</td>
+                        <td>@item.Quantity</td>
+                        <td>@item.Price.ToString("C")</td>
+                        <td>
+                            <button @onclick="() => EditItem(item)">Edit</button>
+                            <button @onclick="() => DeleteItem(item.Id)">Delete</button>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="4">No items found.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <button @onclick="AddNewItem">Add New Item</button>
+</div>
+
+@code {
+    private List<InventoryItem> inventoryItems;
+    private string searchTerm;
+
+    protected override async Task OnInitializedAsync()
+    {
+        inventoryItems = await InventoryService.GetInventoryItemsAsync();
+    }
+
+    private async Task SearchInventory()
+    {
+        if (!string.IsNullOrWhiteSpace(searchTerm))
+        {
+            inventoryItems = await InventoryService.SearchInventoryItemsAsync(searchTerm);
+        }
+        else
+        {
+            inventoryItems = await InventoryService.GetInventoryItemsAsync();
+        }
+    }
+
+    private void AddNewItem()
+    {
+        // Logic to navigate to the add new item page
+    }
+
+    private void EditItem(InventoryItem item)
+    {
+        // Logic to navigate to the edit item page
+    }
+
+    private async Task DeleteItem(int id)
+    {
+        await InventoryService.DeleteInventoryItemAsync(id);
+        inventoryItems = await InventoryService.GetInventoryItemsAsync();
+    }
+}

@@ -1,0 +1,43 @@
+================================================
+    خطوات رفع المشروع إلى GitHub
+================================================
+
+الرابط: https://github.com/waleedsaidi/rove.git
+
+----- الخطوة 1: تثبيت Git -----
+إذا لم يكن Git مثبتاً، حمله من:
+https://git-scm.com/download/win
+
+----- الخطوة 2: افتح PowerShell -----
+اضغط زر Windows + X واختر "Windows PowerShell"
+
+----- الخطوة 3: انتقل لمجلد المشروع -----
+cd "c:\Users\م رهيب\Downloads\rove store\rova-solution"
+
+----- الخطوة 4: شغّل هذه الأوامر واحدة تلو الأخرى -----
+
+git init
+
+git add .
+
+git commit -m "Initial commit: Fixed and updated Rova solution to .NET 9"
+
+git remote add origin https://github.com/waleedsaidi/rove.git
+
+git branch -M main
+
+git push -u origin main
+
+
+----- ملاحظات -----
+* إذا طلب منك username/password:
+  - Username: waleedsaidi
+  - Password: استخدم Personal Access Token (ليس كلمة المرور العادية)
+  
+* لإنشاء Token:
+  1. اذهب: https://github.com/settings/tokens
+  2. اضغط "Generate new token (classic)"
+  3. اختر "repo" permissions
+  4. انسخ الـ token واستخدمه كـ password
+
+================================================

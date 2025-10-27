@@ -1,0 +1,8 @@
+<resources>
+  <color name="PrimaryBlack">#000000</color>
+  <color name="PrimaryRed">#FF0000</color>
+  <color name="PrimaryWhite">#FFFFFF</color>
+  <color name="SecondaryBlack">#1C1C1C</color>
+  <color name="SecondaryRed">#D50000</color>
+  <color name="AccentWhite">#F5F5F5</color>
+</resources>

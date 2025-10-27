@@ -1,0 +1,52 @@
+@page "/booking"
+@using Rova.Shared.Models
+@inject BookingService BookingService
+
+<h3>Booking Page</h3>
+
+<div class="booking-container">
+    <h4>Select a Service</h4>
+    <select @bind="selectedServiceId">
+        @foreach (var service in services)
+        {
+            <option value="@service.Id">@service.Name</option>
+        }
+    </select>
+
+    <h4>Select Date and Time</h4>
+    <input type="date" @bind="selectedDate" />
+    <input type="time" @bind="selectedTime" />
+
+    <button @onclick="BookService">Book Now</button>
+
+    @if (bookingResult != null)
+    {
+        <p>@bookingResult</p>
+    }
+</div>
+
+@code {
+    private List<ServiceDto> services;
+    private int selectedServiceId;
+    private DateTime selectedDate = DateTime.Now;
+    private TimeSpan selectedTime;
+    private string bookingResult;
+
+    protected override async Task OnInitializedAsync()
+    {
+        services = await BookingService.GetServicesAsync();
+    }
+
+    private async Task BookService()
+    {
+        var booking = new BookingDto
+        {
+            ServiceId = selectedServiceId,
+            Date = selectedDate,
+            Time = selectedTime
+        };
+
+        var result = await BookingService.CreateBookingAsync(booking);
+        bookingResult = result ? "Booking successful!" : "Booking failed. Please try again.";
+    }
+}

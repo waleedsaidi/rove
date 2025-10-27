@@ -1,0 +1,40 @@
+<Content>
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Rova.Mobile.Pages.Merchant.AttendanceReportsPage"
+             Title="Attendance Reports"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+
+    <StackLayout Padding="20">
+        <Label Text="Attendance Reports"
+               FontSize="24"
+               HorizontalOptions="Center"
+               TextColor="{DynamicResource PrimaryTextColor}" />
+
+        <CollectionView x:Name="AttendanceReportsCollectionView"
+                        ItemsSource="{Binding AttendanceReports}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BorderColor="{DynamicResource FrameBorderColor}"
+                           CornerRadius="10"
+                           Padding="10"
+                           Margin="5">
+                        <StackLayout>
+                            <Label Text="{Binding EmployeeName}"
+                                   FontSize="18"
+                                   TextColor="{DynamicResource PrimaryTextColor}" />
+                            <Label Text="{Binding Date, StringFormat='{}{0:MMMM dd, yyyy}'}"
+                                   FontSize="14"
+                                   TextColor="{DynamicResource SecondaryTextColor}" />
+                            <Label Text="{Binding Status}"
+                                   FontSize="14"
+                                   TextColor="{DynamicResource StatusTextColor}" />
+                        </StackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>
+</Content>

@@ -1,0 +1,54 @@
+@page "/merchant-dashboard"
+
+@using Rova.Shared.Models
+@inject HttpClient Http
+
+<h3>Merchant Dashboard</h3>
+
+<div class="dashboard-container">
+    <div class="stats">
+        <h4>Attendance Reports</h4>
+        <p>@attendanceReport</p>
+    </div>
+    <div class="stats">
+        <h4>Performance Tracking</h4>
+        <p>@performanceData</p>
+    </div>
+    <div class="stats">
+        <h4>Daily Reports</h4>
+        <p>@dailyReport</p>
+    </div>
+    <div class="stats">
+        <h4>Weekly Reports</h4>
+        <p>@weeklyReport</p>
+    </div>
+</div>
+
+@code {
+    private string attendanceReport;
+    private string performanceData;
+    private string dailyReport;
+    private string weeklyReport;
+
+    protected override async Task OnInitializedAsync()
+    {
+        attendanceReport = await Http.GetStringAsync("api/reports/attendance");
+        performanceData = await Http.GetStringAsync("api/reports/performance");
+        dailyReport = await Http.GetStringAsync("api/reports/daily");
+        weeklyReport = await Http.GetStringAsync("api/reports/weekly");
+    }
+}
+
+<style>
+    .dashboard-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .stats {
+        background-color: #f8f8f8;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+</style>

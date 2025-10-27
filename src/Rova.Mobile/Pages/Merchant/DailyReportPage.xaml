@@ -1,0 +1,45 @@
+<Content>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Rova.Mobile.Pages.Merchant.DailyReportPage"
+             Title="Daily Report"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+
+    <StackLayout Padding="20">
+        <Label Text="Daily Report"
+               FontSize="24"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"
+               TextColor="{DynamicResource PrimaryTextColor}" />
+
+        <CollectionView x:Name="DailyReportCollectionView"
+                        ItemsSource="{Binding DailyReports}"
+                        Margin="0,20,0,0">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BorderColor="{DynamicResource FrameBorderColor}"
+                           CornerRadius="10"
+                           Padding="10"
+                           Margin="0,5">
+                        <StackLayout>
+                            <Label Text="{Binding Date}"
+                                   FontAttributes="Bold"
+                                   TextColor="{DynamicResource SecondaryTextColor}" />
+                            <Label Text="{Binding TotalServices}"
+                                   TextColor="{DynamicResource PrimaryTextColor}" />
+                            <Label Text="{Binding TotalRevenue}"
+                                   TextColor="{DynamicResource PrimaryTextColor}" />
+                        </StackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button Text="Refresh"
+                Command="{Binding RefreshCommand}"
+                BackgroundColor="{DynamicResource PrimaryColor}"
+                TextColor="White"
+                Margin="0,20,0,0" />
+    </StackLayout>
+</ContentPage>
+</Content>

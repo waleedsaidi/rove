@@ -1,0 +1,58 @@
+@page "/attendance"
+
+@using Rova.Shared.Models
+@inject AttendanceService AttendanceService
+
+<h3>Attendance</h3>
+
+<div>
+    <p>Please log in using your biometric data.</p>
+    <input type="file" accept="image/*" @onchange="OnFileChange" />
+    <button @onclick="SubmitBiometric">Submit</button>
+</div>
+
+@if (isLoading)
+{
+    <p>Loading...</p>
+}
+else if (isSuccess)
+{
+    <p>Attendance recorded successfully!</p>
+}
+else if (isError)
+{
+    <p>Error recording attendance. Please try again.</p>
+}
+
+@code {
+    private bool isLoading = false;
+    private bool isSuccess = false;
+    private bool isError = false;
+
+    private async Task OnFileChange(ChangeEventArgs e)
+    {
+        // Handle file change for biometric data
+    }
+
+    private async Task SubmitBiometric()
+    {
+        isLoading = true;
+        isSuccess = false;
+        isError = false;
+
+        try
+        {
+            // Call the attendance service to record attendance
+            await AttendanceService.RecordAttendanceAsync();
+            isSuccess = true;
+        }
+        catch
+        {
+            isError = true;
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+}

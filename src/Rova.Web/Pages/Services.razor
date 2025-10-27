@@ -1,0 +1,39 @@
+@page "/services"
+
+@using Rova.Shared.Models
+@inject HttpClient Http
+
+<h1>Our Services</h1>
+
+<div class="services-container">
+    @if (services == null)
+    {
+        <p>Loading services...</p>
+    }
+    else if (services.Count == 0)
+    {
+        <p>No services available at the moment.</p>
+    }
+    else
+    {
+        <ul>
+            @foreach (var service in services)
+            {
+                <li>
+                    <h2>@service.Name</h2>
+                    <p>@service.Description</p>
+                    <p>Price: @service.Price.ToString("C")</p>
+                </li>
+            }
+        </ul>
+    }
+</div>
+
+@code {
+    private List<ServiceDto> services;
+
+    protected override async Task OnInitializedAsync()
+    {
+        services = await Http.GetFromJsonAsync<List<ServiceDto>>("api/services");
+    }
+}

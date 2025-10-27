@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0-ios;net6.0-android;net6.0-maccatalyst;net6.0-windows</TargetFramework>
+    <RootNamespace>Rova.Mobile</RootNamespace>
+    <AssemblyName>Rova.Mobile</AssemblyName>
+    <ApplicationTitle>Rova</ApplicationTitle>
+    <ApplicationId>com.rova.mobile</ApplicationId>
+    <UseMaui>true</UseMaui>
+    <Nullable>enable</Nullable>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Maui" Version="1.1.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Maui.Controls" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Maui.Essentials" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Rova.Shared\Rova.Shared.csproj" />
+    <ProjectReference Include="..\Rova.Core\Rova.Core.csproj" />
+  </ItemGroup>
+
+</Project>

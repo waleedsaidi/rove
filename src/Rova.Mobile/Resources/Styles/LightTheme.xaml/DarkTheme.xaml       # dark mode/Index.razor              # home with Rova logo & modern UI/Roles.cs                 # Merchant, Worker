@@ -1,0 +1,89 @@
+Contents of the file: /rova-solution/rova-solution/src/Rova.Mobile/Resources/Styles/DarkTheme.xaml
+
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <Color x:Key="PrimaryColor">#FF0000</Color> <!-- Red -->
+    <Color x:Key="SecondaryColor">#FFFFFF</Color> <!-- White -->
+    <Color x:Key="BackgroundColor">#000000</Color> <!-- Black -->
+    <Color x:Key="TextColor">#FFFFFF</Color> <!-- White for text -->
+    <Color x:Key="AccentColor">#FF0000</Color> <!-- Red accent -->
+
+    <Style TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+    </Style>
+
+    <Style TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />
+        <Setter Property="TextColor" Value="{StaticResource SecondaryColor}" />
+    </Style>
+
+    <Style TargetType="Entry">
+        <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
+        <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+    </Style>
+
+    <Style TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
+        <Setter Property="BorderColor" Value="{StaticResource PrimaryColor}" />
+    </Style>
+</ResourceDictionary>
+
+Contents of the file: /rova-solution/rova-solution/src/Rova.Web/Pages/Index.razor
+
+@page "/"
+@using Rova.Shared.Models
+@inject NavigationManager Navigation
+
+<div class="home-container">
+    <img src="images/rova-logo.png" alt="Rova Logo" class="logo" />
+    <h1>Welcome to Rova Car Workshop</h1>
+    <p>Your one-stop solution for car modifications and services.</p>
+    <button @onclick="NavigateToServices">Explore Services</button>
+</div>
+
+<style>
+    .home-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-color: black;
+        color: white;
+        text-align: center;
+    }
+
+    .logo {
+        width: 200px;
+        height: auto;
+    }
+
+    button {
+        background-color: red;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-top: 20px;
+    }
+
+    button:hover {
+        background-color: darkred;
+    }
+</style>
+
+@code {
+    private void NavigateToServices()
+    {
+        Navigation.NavigateTo("/services");
+    }
+}
+
+Contents of the file: /rova-solution/rova-solution/src/Rova.Shared/Enums/Roles.cs
+
+public enum Roles
+{
+    Merchant,
+    Worker
+}
