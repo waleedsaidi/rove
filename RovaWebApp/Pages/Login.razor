@@ -1,0 +1,85 @@
+@page "/login"
+
+<PageTitle>تسجيل الدخول - Rova</PageTitle>
+
+<div class="login-container">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div class="card shadow-lg">
+                    <div class="card-body p-5">
+                        <h2 class="text-center mb-4" style="color: #dc3545;">ROVA</h2>
+                        <h5 class="text-center text-muted mb-4">تسجيل الدخول</h5>
+
+                        <form @onsubmit="HandleLogin">
+                            <div class="mb-3">
+                                <label class="form-label">اسم المستخدم</label>
+                                <input type="text" class="form-control" @bind="username" placeholder="أدخل اسم المستخدم" />
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">كلمة المرور</label>
+                                <input type="password" class="form-control" @bind="password" placeholder="أدخل كلمة المرور" />
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">نوع المستخدم</label>
+                                <select class="form-select" @bind="userRole">
+                                    <option value="merchant">صاحب العمل</option>
+                                    <option value="worker">موظف</option>
+                                </select>
+                            </div>
+
+                            @if (!string.IsNullOrEmpty(errorMessage))
+                            {
+                                <div class="alert alert-danger">@errorMessage</div>
+                            }
+
+                            <button type="submit" class="btn btn-danger w-100 mt-3">دخول</button>
+                        </form>
+
+                        <div class="text-center mt-3">
+                            <small class="text-muted">النسخة التجريبية - Demo Version</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .login-container {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+    }
+
+    .card {
+        border: none;
+        border-radius: 15px;
+    }
+</style>
+
+@code {
+    private string username = "";
+    private string password = "";
+    private string userRole = "merchant";
+    private string errorMessage = "";
+
+    private void HandleLogin()
+    {
+        if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+        {
+            errorMessage = "الرجاء إدخال اسم المستخدم وكلمة المرور";
+            return;
+        }
+
+        // Demo login
+        NavigationManager.NavigateTo("/dashboard");
+    }
+
+    [Inject]
+    private NavigationManager NavigationManager { get; set; } = default!;
+}

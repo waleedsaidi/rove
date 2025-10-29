@@ -1,0 +1,114 @@
+@page "/dashboard"
+
+<PageTitle>لوحة التحكم - Rova</PageTitle>
+
+<div class="container mt-4">
+    <h2 class="mb-4">لوحة التحكم</h2>
+
+    <div class="row g-4">
+        <div class="col-md-3">
+            <div class="card bg-danger text-white">
+                <div class="card-body">
+                    <h5 class="card-title">إجمالي الحجوزات</h5>
+                    <h2 class="display-4">156</h2>
+                    <small>هذا الشهر</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card bg-success text-white">
+                <div class="card-body">
+                    <h5 class="card-title">الإيرادات</h5>
+                    <h2 class="display-4">$12.5K</h2>
+                    <small>هذا الشهر</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card bg-info text-white">
+                <div class="card-body">
+                    <h5 class="card-title">العملاء</h5>
+                    <h2 class="display-4">89</h2>
+                    <small>عميل نشط</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card bg-warning text-white">
+                <div class="card-body">
+                    <h5 class="card-title">المخزون</h5>
+                    <h2 class="display-4">234</h2>
+                    <small>منتج متوفر</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-danger text-white">
+                    <h5 class="mb-0">الحجوزات الأخيرة</h5>
+                </div>
+                <div class="card-body">
+                    <div class="list-group list-group-flush">
+                        <div class="list-group-item">
+                            <div class="d-flex justify-content-between">
+                                <span>أحمد محمد</span>
+                                <span class="badge bg-success">مؤكد</span>
+                            </div>
+                            <small class="text-muted">اليوم 10:00 صباحاً</small>
+                        </div>
+                        <div class="list-group-item">
+                            <div class="d-flex justify-content-between">
+                                <span>سارة علي</span>
+                                <span class="badge bg-warning">قيد الانتظار</span>
+                            </div>
+                            <small class="text-muted">اليوم 2:30 مساءً</small>
+                        </div>
+                        <div class="list-group-item">
+                            <div class="d-flex justify-content-between">
+                                <span>محمد حسن</span>
+                                <span class="badge bg-success">مؤكد</span>
+                            </div>
+                            <small class="text-muted">غداً 9:00 صباحاً</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-danger text-white">
+                    <h5 class="mb-0">تنبيهات المخزون</h5>
+                </div>
+                <div class="card-body">
+                    <div class="list-group list-group-flush">
+                        <div class="list-group-item">
+                            <div class="d-flex justify-content-between">
+                                <span>منتج A</span>
+                                <span class="badge bg-danger">5 متبقي</span>
+                            </div>
+                        </div>
+                        <div class="list-group-item">
+                            <div class="d-flex justify-content-between">
+                                <span>منتج B</span>
+                                <span class="badge bg-warning">12 متبقي</span>
+                            </div>
+                        </div>
+                        <div class="list-group-item">
+                            <div class="d-flex justify-content-between">
+                                <span>منتج C</span>
+                                <span class="badge bg-success">45 متبقي</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+@page "/"
+
+<PageTitle>Rova - نظام إدارة متكامل</PageTitle>
+
+<div class="hero-section">
+    <div class="container">
+        <div class="text-center">
+            <h1 class="display-3 fw-bold mb-4" style="color: #dc3545;">ROVA</h1>
+            <p class="lead mb-5">نظام إدارة متكامل للأعمال</p>
+            
+            <div class="row g-4 mt-5">
+                <div class="col-md-4">
+                    <div class="card shadow h-100">
+                        <div class="card-body text-center">
+                            <div class="feature-icon bg-danger bg-gradient text-white mb-3 mx-auto" style="width: 4rem; height: 4rem; border-radius: 0.5rem; display: flex; align-items: center; justify-content: center;">
+                                <i class="bi bi-calendar-check" style="font-size: 2rem;"></i>
+                            </div>
+                            <h3 class="h5">إدارة الحجوزات</h3>
+                            <p class="text-muted">نظام حجوزات متقدم وسهل الاستخدام</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card shadow h-100">
+                        <div class="card-body text-center">
+                            <div class="feature-icon bg-danger bg-gradient text-white mb-3 mx-auto" style="width: 4rem; height: 4rem; border-radius: 0.5rem; display: flex; align-items: center; justify-content: center;">
+                                <i class="bi bi-box-seam" style="font-size: 2rem;"></i>
+                            </div>
+                            <h3 class="h5">إدارة المخزون</h3>
+                            <p class="text-muted">تتبع وإدارة المخزون بكفاءة</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card shadow h-100">
+                        <div class="card-body text-center">
+                            <div class="feature-icon bg-danger bg-gradient text-white mb-3 mx-auto" style="width: 4rem; height: 4rem; border-radius: 0.5rem; display: flex; align-items: center; justify-content: center;">
+                                <i class="bi bi-graph-up" style="font-size: 2rem;"></i>
+                            </div>
+                            <h3 class="h5">التقارير</h3>
+                            <p class="text-muted">تقارير مفصلة عن الأداء</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-5">
+                <a href="/login" class="btn btn-danger btn-lg px-5">ابدأ الآن</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .hero-section {
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    }
+    
+    .card {
+        border: none;
+        transition: transform 0.3s;
+    }
+    
+    .card:hover {
+        transform: translateY(-10px);
+    }
+</style>
