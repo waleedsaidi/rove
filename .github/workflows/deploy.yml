@@ -10,31 +10,56 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v4
     
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '9.0.x'
     
-    - name: Publish app
-      run: dotnet publish RovaWebApp/Rova.WebApp.csproj -c Release -o release --nologo
+    - name: Restore dependencies
+      run: dotnet restore RovaWebApp/Rova.WebApp.csproj
     
-    - name: Change base href
-      run: sed -i 's/<base href="\/" \/>/<base href="\/rove\/" \/>/g' release/wwwroot/index.html
+    - name: Build
+      run: dotnet build RovaWebApp/Rova.WebApp.csproj -c Release --no-restore
     
-    - name: Add .nojekyll
-      run: touch release/wwwroot/.nojekyll
+    - name: Publish
+      run: dotnet publish RovaWebApp/Rova.WebApp.csproj -c Release -o publish --no-build
+    
+    - name: Change base href in index.html
+      run: |
+        sed -i 's/<base href="\/" \/>/<base href="\/rove\/" \/>/g' publish/wwwroot/index.html
+    
+    - name: Add .nojekyll file
+      run: touch publish/wwwroot/.nojekyll
+      
+    - name: Copy index.html to 404.html
+      run: cp publish/wwwroot/index.html publish/wwwroot/404.html
     
     - name: Upload artifact
-      uses: actions/upload-pages-artifact@v2
+      uses: actions/upload-pages-artifact@v3
       with:
-        path: release/wwwroot
-    
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v2
+        path: publish/wwwroot
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
