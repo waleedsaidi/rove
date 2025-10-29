@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rova - نظام إدارة متكامل</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+        }
+        
+        .hero {
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #dc3545;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card {
+            border: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #dc3545, #c82333);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .btn-primary {
+            background: #dc3545;
+            border: none;
+            padding: 15px 50px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+        }
+        
+        .btn-primary:hover {
+            background: #c82333;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <div class="logo">ROVA</div>
+            <h2 class="mb-4">نظام إدارة متكامل للأعمال</h2>
+            <p class="lead text-muted mb-4">حل شامل لإدارة الحجوزات، المخزون، والتقارير</p>
+            <span class="status-badge">✓ جاهز للاستخدام</span>
+        </div>
+
+        <div class="row g-4 mb-5">
+            <div class="col-md-4">
+                <div class="card feature-card shadow">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon">
+                            <i class="bi bi-calendar-check text-white" style="font-size: 2.5rem;"></i>
+                        </div>
+                        <h4>إدارة الحجوزات</h4>
+                        <p class="text-muted">نظام حجوزات متقدم مع تنبيهات وتذكيرات تلقائية</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card feature-card shadow">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon">
+                            <i class="bi bi-box-seam text-white" style="font-size: 2.5rem;"></i>
+                        </div>
+                        <h4>إدارة المخزون</h4>
+                        <p class="text-muted">تتبع المخزون بكفاءة مع تنبيهات عند انخفاض الكمية</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card feature-card shadow">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon">
+                            <i class="bi bi-graph-up text-white" style="font-size: 2.5rem;"></i>
+                        </div>
+                        <h4>التقارير والإحصائيات</h4>
+                        <p class="text-muted">تقارير مفصلة يومية وأسبوعية عن الأداء</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-5">
+            <div class="col-md-6 mx-auto">
+                <div class="card shadow">
+                    <div class="card-body p-4">
+                        <h5 class="text-center mb-4">النسخة التجريبية</h5>
+                        <div class="mb-3">
+                            <label class="form-label">اسم المستخدم</label>
+                            <input type="text" class="form-control" id="username" placeholder="أدخل اسم المستخدم">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">كلمة المرور</label>
+                            <input type="password" class="form-control" id="password" placeholder="أدخل كلمة المرور">
+                        </div>
+                        <button class="btn btn-primary w-100" onclick="login()">
+                            <i class="bi bi-box-arrow-in-right"></i> تسجيل الدخول
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mb-5">
+            <h4 class="mb-3">المشروع على GitHub</h4>
+            <a href="https://github.com/waleedsaidi/rove" target="_blank" class="btn btn-dark">
+                <i class="bi bi-github"></i> عرض الكود المصدري
+            </a>
+        </div>
+
+        <div class="card shadow mb-5">
+            <div class="card-body">
+                <h5 class="mb-3">📊 لوحة التحكم - عرض توضيحي</h5>
+                <div class="row text-center g-3">
+                    <div class="col-md-3">
+                        <div class="p-3 bg-danger text-white rounded">
+                            <h3>156</h3>
+                            <small>إجمالي الحجوزات</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="p-3 bg-success text-white rounded">
+                            <h3>$12.5K</h3>
+                            <small>الإيرادات</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="p-3 bg-info text-white rounded">
+                            <h3>89</h3>
+                            <small>العملاء النشطون</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="p-3 bg-warning text-white rounded">
+                            <h3>234</h3>
+                            <small>منتجات المخزون</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="text-center text-muted pb-5">
+            <p>© 2025 Rova - مشروع مفتوح المصدر</p>
+            <p>تم البناء بـ .NET 9.0 | Blazor WebAssembly | Bootstrap 5</p>
+        </footer>
+    </div>
+
+    <script>
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (username && password) {
+                alert('مرحباً ' + username + '!\n\nهذه نسخة تجريبية.\nالنسخة الكاملة قيد التطوير.');
+            } else {
+                alert('الرجاء إدخال اسم المستخدم وكلمة المرور');
+            }
+        }
+    </script>
+</body>
+</html>
